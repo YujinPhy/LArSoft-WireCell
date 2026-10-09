@@ -137,6 +137,8 @@ protodunehd_nfsp:
     wcls_main: {
         tool_type: WCLS
         apps: ["Pgrapher"]
+        logsinks: ["stdout"]
+        loglevels: ["debug", "pgraph:info"]
         # plugins: ["WireCellPgraph", "WireCellGen","WireCellSio","WireCellRoot","WireCellLarsoft"]
         plugins: ["WireCellPgraph", "WireCellGen","WireCellSio","WireCellLarsoft"]
         inputers: ["wclsRawFrameSource"]
@@ -291,6 +293,8 @@ protodunehd_dnnsp:
     wcls_main: {
         tool_type: WCLS
         apps: ["Pgrapher"]
+        logsinks: ["stdout"]
+        loglevels: ["debug", "pgraph:info"]
         plugins: ["WireCellPgraph", "WireCellGen","WireCellSio","WireCellSigProc","WireCellRoot","WireCellLarsoft","WireCellHio","WireCellTbb","WireCellImg","WireCellPytorch"]
         inputers: ["wclsRawFrameSource"]
         outputers: ["wclsFrameSaver:spsaver", "wclsFrameSaver:dnnsaver"]

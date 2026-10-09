@@ -39,4 +39,61 @@ wirecell_protodunevd_sim_deposplat:
     }
 }
 
+
+protodunehd_nfsp:
+{
+    module_type : WireCellToolkit
+    wcls_main: {
+        tool_type: WCLS
+        apps: ["Pgrapher"]
+        logsinks: ["stdout"]
+        loglevels: ["debug", "pgraph:info"]
+        plugins: ["WireCellPgraph", "WireCellGen","WireCellSio","WireCellRoot","WireCellLarsoft"]
+        # plugins: ["WireCellPgraph", "WireCellGen","WireCellSio","WireCellLarsoft"]
+        inputers: ["wclsRawFrameSource"]
+        outputers: ["wclsFrameSaver:spsaver"]
+        configs: ["pgrapher/experiment/pdhd/wcls-nf-sp.jsonnet"]
+        params : {
+            raw_input_label: "tpcrawdecoder:daq"
+            reality: "sim" # vs. "sim"
+            epoch: "after"
+            signal_output_form: "sparse"
+            use_resampler: "false"
+        }
+        structs: {
+            Nbit: @local::Nbit_standard 
+            elecGain:    14 # 14 or 7.8 mV/fC, TODO need a database or such, value changed in mid-July 2024
+        }
+    }
+}
+
+wirecell_pdhd_sim_deposplat:
+{
+    module_type : WireCellToolkit
+    wcls_main: {
+        tool_type: WCLS
+        apps: ["Pgrapher"]
+        plugins: ["WireCellPgraph", "WireCellGen","WireCellSio","WireCellSigProc","WireCellRoot","WireCellLarsoft","WireCellHio","WireCellTbb","WireCellImg","WireCellPytorch"]
+        configs: ["pgrapher/experiment/pdhd/wcls-sim-drift-deposplat.jsonnet"]
+        
+        inputers: ["wclsRawFrameSource"]
+        outputers: ["wclsFrameSaver:spsaver"]
+        
+        # inputers: ["wclsSimDepoSource:"]
+        # outputers: [
+        #     // "wclsSimChannelSink:postdrift",
+        #     // "wclsFrameSaver:simdigits"
+        # ]
+        params: {
+            raw_input_label: "tpcrawdecoder:daq"
+        }
+	structs: {
+        Nbit: @local::Nbit_standard
+        elecGain:    14 # changed in July, need database
+	}
+    }
+}
+
+
+
 END_PROLOG

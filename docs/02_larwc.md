@@ -155,7 +155,10 @@ lar -n1 -c fcl_sim/detsim_reco/standard_reco_protodunehd_MC.fcl -s detsim.root -
 #### PDVD Example pipeline
 
 ```bash
-
+lar -n1 -c /nfs/data/1/yujin/LArSoft-WireCell/fcl_sim/gen/gen_protodunevd_muon_override.fcl -o gen.root
+lar -n1 -c /nfs/data/1/yujin/LArSoft-WireCell/fcl_sim/g4/protodunevd_refactored_g4_stage1.fcl -s gen.root -o g4_stage1.root
+lar -n1 -c /nfs/data/1/yujin/LArSoft-WireCell/fcl_sim/g4/protodunevd_refactored_g4_stage2.fcl -s g4_stage1.root -o g4_stage2.root
+lar -n1 -c /nfs/data/1/yujin/LArSoft-WireCell/fcl_sim/detsim_reco/pdvd_wirecell_sim_deposplat.fcl -s g4_stage2.root -o detsim.root
 ```
 
 
@@ -179,6 +182,8 @@ The input data is usually given in `.h5` format. Then just run reco stage `.fcl`
     - This use `pgrapher/experiment/protodunevd/wcls-nf-sp-dnnroi.jsonnet` cfg file.
 
 ## 4. `wirecell-dune.fcl`
+
+File path: `/cvmfs/dune.opensciencegrid.org/products/dune/dunereco/v10_26_00d01/fcl/wirecell_dune.fcl`
 
 #### PDHD
 

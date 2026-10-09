@@ -23,7 +23,7 @@
 #include "dune_calibanatree.fcl"
 
 
-#include "wirecell_dune_modified.fcl"
+#include "wirecell_dune.fcl"
 
 process_name: Reco
 
@@ -86,7 +86,8 @@ physics: {
   }
 
   producers: {
-    wclsdatahd:         @local::protodunehd_nfsp
+    # wclsdatahd:         @local::protodunehd_nfsp
+    wclsdatahd:         @local::protodunehd_nfsp_dnnroi_mc
     # Hit finder
     gaushit:            @local::protodunespmc_gaushitfinder
     # space point solver

@@ -1,0 +1,3 @@
+- [ ] Check wheter DNN ROI SP works well?
+- [ ] H5 and magnify sink works well?
+- [ ] 

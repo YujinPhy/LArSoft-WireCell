@@ -4,7 +4,7 @@
 #include "corsika_protodune.fcl"
 #include "dune_radiological_model_decay0.fcl"
 
-process_name: SinglesGen
+process_name: pdhdCosmic
 
 services:
 {
